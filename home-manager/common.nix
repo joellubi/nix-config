@@ -104,4 +104,9 @@
       jnoortheen.nix-ide
     ];
   };
+
+  programs.kitty = {
+    enable = true;
+    theme = "Space Gray Eighties";
+  };
 }

@@ -20,7 +20,6 @@
         [
           vim
           git
-          cowsay
         ];
 
       # Auto upgrade nix package and the daemon service.
