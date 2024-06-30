@@ -63,7 +63,7 @@
   #  /etc/profiles/per-user/joel/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "vim";
   };
 
   # Let Home Manager install and manage itself.
@@ -99,6 +99,7 @@
       "nix.serverPath" = "nixd";
     };
     extensions = with pkgs.vscode-extensions; [
+      eamodio.gitlens
       golang.go
       # arrterian.nix-env-selector
       jnoortheen.nix-ide
