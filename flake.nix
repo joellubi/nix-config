@@ -1,5 +1,5 @@
 {
-  description = "NixOS Configuration";
+  description = "NixOS systems and tools";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -7,25 +7,33 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    xremap-flake.url = "github:xremap/nix-flake";
+    # xremap-flake.url = "github:xremap/nix-flake";
+
+    # darwin = {
+    #   url = "github:LnL7/nix-darwin";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
-  let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
-      };
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: let
+    # Overlays is the list of overlays we want to apply from flake inputs.
+    overlays = [];
+
+    mkSystem = import ./lib/mksystem.nix {
+      inherit overlays nixpkgs inputs self;
     };
-  in
-  {
-    nixosConfigurations = {
-      baboon = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs system; };
-        modules = [ ./nixos/configuration.nix ];
-      };
+  in {
+    nixosConfigurations.baboon = mkSystem {
+      machine = "baboon";
+      user    = "joel";
+      system  = "x86_64-linux";
+    };
+
+    darwinConfigurations.jlubinitsky-mac = mkSystem {
+      machine = "jlubinitsky-mac";
+      user   = "jlubinitsky";
+      system = "aarch64-darwin";
+      darwin = true;
     };
   };
 }
