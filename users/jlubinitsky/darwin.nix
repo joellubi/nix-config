@@ -6,6 +6,7 @@
     casks  = [
       "spotify"
       "logi-options-plus"
+      "zoom"
     ];
   };
 

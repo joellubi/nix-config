@@ -118,7 +118,6 @@ in {
 
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
     userSettings = {
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nixd";
