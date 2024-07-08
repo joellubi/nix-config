@@ -9,7 +9,7 @@
 
 let
   # The config files for this system.
-  machineConfig = ../machines/${machine}.nix;
+  machineConfig = ../machines/${machine};
   userOSConfig = ../users/${user}/${if darwin then "darwin" else "nixos" }.nix;
   userHMConfig = ../users/${user}/home-manager.nix;
 
