@@ -24,6 +24,7 @@ in {
       pkgs.delve
       pkgs.graphviz
       pkgs.nixd
+      pkgs.google-cloud-sdk
     ];
 
     #---------------------------------------------------------------------
