@@ -1,11 +1,16 @@
 { config, lib, pkgs, ... }:
-
+with lib;
 let
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
 in {
 
-  options = {};
+  options = {
+    overrides.vscode.package = mkOption {
+      type = types.package;
+      default = pkgs.vscodium;
+    };
+  };
 
   config = {
 
@@ -99,6 +104,7 @@ in {
 
     programs.vscode = {
       enable = true;
+      package = config.overrides.vscode.package;
       userSettings = {
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";
