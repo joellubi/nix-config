@@ -87,7 +87,6 @@
     kitty
     xclip
     nixd
-    tree
     spotify
   ];
 

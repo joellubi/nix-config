@@ -19,6 +19,7 @@ in {
     #---------------------------------------------------------------------
 
     home.packages = [
+      pkgs.tree
       pkgs.go
       pkgs.gotools
       pkgs.delve
