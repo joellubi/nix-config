@@ -11,4 +11,6 @@ in {
 
   home.username = "jlubinitsky";
   home.homeDirectory = "/Users/jlubinitsky";
+
+  overrides.vscode.package = pkgs.vscode;
 }
