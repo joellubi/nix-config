@@ -32,14 +32,14 @@ in {
     # Env vars and dotfiles
     #---------------------------------------------------------------------
 
-    # home.sessionVariables = {
-    #   LANG = "en_US.UTF-8";
-    #   LC_CTYPE = "en_US.UTF-8";
-    #   LC_ALL = "en_US.UTF-8";
-    #   EDITOR = "nvim";
-    #   PAGER = "less -FirSwX";
-    #   MANPAGER = "${manpager}/bin/manpager";
-    # };
+    home.sessionVariables = {
+      LANG = "en_US.UTF-8";
+      LC_CTYPE = "en_US.UTF-8";
+      LC_ALL = "en_US.UTF-8";
+      EDITOR = "vim";
+      # PAGER = "less -FirSwX";
+      # MANPAGER = "${manpager}/bin/manpager";
+    };
 
     #---------------------------------------------------------------------
     # Programs
@@ -110,12 +110,19 @@ in {
       userSettings = {
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";
+        "cmake.pinnedCommands" = [
+          "workbench.action.tasks.configureTaskRunner"
+          "workbench.action.tasks.runTask"
+        ];
       };
       extensions = with pkgs.vscode-extensions; [
         eamodio.gitlens
         golang.go
-        # arrterian.nix-env-selector
         jnoortheen.nix-ide
+        ms-python.python
+        ms-pyright.pyright
+        mkhl.direnv
+        ms-vscode.cpptools-extension-pack
       ];
     };
 
@@ -123,6 +130,12 @@ in {
     programs.kitty = {
       enable = true;
       theme = "Space Gray Eighties";
+    };
+
+    programs.direnv = {
+      enable = true;
+      enableZshIntegration = true;
+      nix-direnv.enable = true;
     };
 
   };
