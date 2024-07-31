@@ -26,7 +26,7 @@ in {
       pkgs.graphviz
       pkgs.nixd
       pkgs.google-cloud-sdk
-      pkgs.ethtool
+      pkgs.wireguard-tools
     ];
 
     #---------------------------------------------------------------------
