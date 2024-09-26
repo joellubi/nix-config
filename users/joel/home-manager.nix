@@ -12,7 +12,7 @@ in {
   home.username = "joel";
   home.homeDirectory = "/home/joel";
 
-  programs.firefox.enable = true;
+  modules.firefox.enable = true;
 
   programs.gnome-shell = {
     enable = true;
