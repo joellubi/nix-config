@@ -29,9 +29,9 @@
       system  = "x86_64-linux";
     };
 
-    darwinConfigurations.jlubinitsky-mac = mkSystem {
-      machine = "jlubinitsky-mac";
-      user   = "jlubinitsky";
+    darwinConfigurations.panther = mkSystem {
+      machine = "panther";
+      user   = "joel";
       system = "aarch64-darwin";
       darwin = true;
     };
