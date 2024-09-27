@@ -6,10 +6,7 @@ let
 in {
 
   options = {
-    overrides.vscode.package = mkOption {
-      type = types.package;
-      default = pkgs.vscodium;
-    };
+    overrides.vscode.unfree = mkEnableOption "unfree vscode binary";
   };
 
   config = {
@@ -107,7 +104,7 @@ in {
 
     programs.vscode = {
       enable = true;
-      package = config.overrides.vscode.package;
+      package = if config.overrides.vscode.unfree then pkgs.vscode else pkgs.vscodium;
       userSettings = {
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";

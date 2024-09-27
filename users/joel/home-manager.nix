@@ -9,13 +9,11 @@ in {
 
   imports = [ ../../modules ];
 
-  home.username = "joel";
-  home.homeDirectory = "/home/joel";
-
   modules.firefox.enable = true;
+  overrides.vscode.unfree = isDarwin;
 
   programs.gnome-shell = {
-    enable = true;
+    enable = isLinux;
     extensions = [
       { package = pkgs.gnomeExtensions.vitals; }
     ];
