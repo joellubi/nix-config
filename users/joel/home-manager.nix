@@ -9,7 +9,7 @@ in {
 
   imports = [ ../../modules ];
 
-  modules.firefox.enable = true;
+  modules.firefox.enable = !isDarwin;
   overrides.vscode.unfree = isDarwin;
 
   programs.gnome-shell = {
