@@ -93,6 +93,12 @@ in {
       enableCompletion = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
+      initExtra = ''
+        # Homebrew
+        if [ -d "/opt/homebrew" ]; then
+            eval "$(/opt/homebrew/bin/brew shellenv)"
+        fi
+      '';
 
       oh-my-zsh = {
         enable = true;

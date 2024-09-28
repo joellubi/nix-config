@@ -5,9 +5,10 @@
     enable = true;
     casks  = [
       "spotify"
-      "logi-options-plus"
+      "logi-options+"
       "zoom"
     ];
+    onActivation.cleanup = "uninstall";
   };
 
   # The user should already exist, but we need to set this up so Nix knows
