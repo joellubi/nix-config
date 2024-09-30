@@ -270,22 +270,4 @@ in {
     };
 
   };
-
-  # services.xremap = {
-  #   withX11 = true;
-  #   config = {
-  #     modmap = [
-  #       { remap = { "leftalt" = "leftctrl"; }; }
-  #     ];
-  #   };
-  # };
-
-  # services.gpg-agent = {
-  #   enable = isLinux;
-  #   pinentryPackage = pkgs.pinentry-tty;
-
-  #   # cache the keys forever so we don't get asked for a password
-  #   defaultCacheTtl = 31536000;
-  #   maxCacheTtl = 31536000;
-  # };
 }

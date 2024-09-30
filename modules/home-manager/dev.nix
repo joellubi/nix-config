@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 with lib;
-{
+let
+  isLinux = pkgs.stdenv.isLinux;
+in {
 
   options = {
     overrides.vscode.unfree = mkEnableOption "unfree vscode binary";
@@ -25,7 +27,9 @@ with lib;
       pkgs.vim
       pkgs.wget
       pkgs.wireguard-tools
-    ];
+    ] ++ (lib.optionals isLinux [
+      pkgs.xclip
+    ]);
 
     #---------------------------------------------------------------------
     # Env vars and dotfiles
