@@ -100,7 +100,7 @@ in {
 
     programs.kitty = {
       enable = true;
-      theme = "Space Gray Eighties";
+      themeFile = "SpaceGray_Eighties";
     };
 
     programs.direnv = {
