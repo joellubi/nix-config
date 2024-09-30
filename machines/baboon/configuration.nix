@@ -5,7 +5,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices."luks-2e58d2f7-e7ca-4d7f-9622-942f6bc0151b".device = "/dev/disk/by-uuid/2e58d2f7-e7ca-4d7f-9622-942f6bc0151b";
   networking.hostName = "baboon";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
