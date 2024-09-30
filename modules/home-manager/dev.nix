@@ -29,6 +29,7 @@ in {
       pkgs.wireguard-tools
     ] ++ (lib.optionals isLinux [
       pkgs.xclip
+      pkgs.spotify
     ]);
 
     #---------------------------------------------------------------------
