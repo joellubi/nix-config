@@ -77,6 +77,7 @@ in {
     };
 
 
+    home.shellAliases.code = if config.overrides.vscode.unfree then "code" else "codium";
     programs.vscode = {
       enable = true;
       package = if config.overrides.vscode.unfree then pkgs.vscode else pkgs.vscodium;
