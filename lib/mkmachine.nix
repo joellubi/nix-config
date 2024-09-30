@@ -5,6 +5,7 @@ in
 {
   imports = fs.toList (
               fs.unions [
+                ../modules/machine
                 ../machines/${name}/configuration.nix
                 (fs.maybeMissing ../machines/${name}/hardware-configuration.nix)
               ]

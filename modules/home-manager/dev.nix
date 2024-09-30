@@ -1,9 +1,6 @@
 { config, lib, pkgs, ... }:
 with lib;
-let
-  isDarwin = pkgs.stdenv.isDarwin;
-  isLinux = pkgs.stdenv.isLinux;
-in {
+{
 
   options = {
     overrides.vscode.unfree = mkEnableOption "unfree vscode binary";
@@ -16,13 +13,17 @@ in {
     #---------------------------------------------------------------------
 
     home.packages = [
-      pkgs.tree
-      pkgs.go
-      pkgs.gotools
+      pkgs.curl
       pkgs.delve
-      pkgs.graphviz
-      pkgs.nixd
+      pkgs.go
       pkgs.google-cloud-sdk
+      pkgs.gotools
+      pkgs.graphviz
+      pkgs.lf
+      pkgs.nixd
+      pkgs.tree
+      pkgs.vim
+      pkgs.wget
       pkgs.wireguard-tools
     ];
 
@@ -43,24 +44,6 @@ in {
     # Programs
     #---------------------------------------------------------------------
 
-    # programs.gpg.enable = !isDarwin;
-
-    # programs.direnv= {
-    #   enable = true;
-
-    #   config = {
-    #     whitelist = {
-    #       prefix= [
-    #         "$HOME/code/go/src/github.com/hashicorp"
-    #         "$HOME/code/go/src/github.com/mitchellh"
-    #       ];
-
-    #       exact = ["$HOME/.envrc"];
-    #     };
-    #   };
-    # };
-
-
     programs.git = {
       enable = true;
       userName = "Joel Lubinitsky";
@@ -68,24 +51,6 @@ in {
       extraConfig = {
         init.defaultBranch = "main";
       };
-      # signing = {
-      #   key = "523D5DC389D273BC";
-      #   signByDefault = true;
-      # };
-      # aliases = {
-      #   cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 -r git branch -d";
-      #   prettylog = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(r) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
-      #   root = "rev-parse --show-toplevel";
-      # };
-      # extraConfig = {
-      #   branch.autosetuprebase = "always";
-      #   color.ui = true;
-      #   core.askPass = ""; # needs to be empty to use terminal for ask pass
-      #   credential.helper = "store"; # want to make this more secure
-      #   github.user = "mitchellh";
-      #   push.default = "tracking";
-      #   init.defaultBranch = "main";
-      # };
     };
 
     programs.zsh = {
@@ -147,14 +112,5 @@ in {
   #       { remap = { "leftalt" = "leftctrl"; }; }
   #     ];
   #   };
-  # };
-
-  # services.gpg-agent = {
-  #   enable = isLinux;
-  #   pinentryPackage = pkgs.pinentry-tty;
-
-  #   # cache the keys forever so we don't get asked for a password
-  #   defaultCacheTtl = 31536000;
-  #   maxCacheTtl = 31536000;
   # };
 }

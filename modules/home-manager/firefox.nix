@@ -1,9 +1,6 @@
 { config, lib, pkgs, ... }:
 with lib;
 let
-  isDarwin = pkgs.stdenv.isDarwin;
-  isLinux = pkgs.stdenv.isLinux;
-
   cfg = config.modules.firefox;
 in {
 
