@@ -4,8 +4,10 @@
   homebrew = {
     enable = true;
     casks  = [
-      "spotify"
+      "google-chrome"
       "logi-options+"
+      "slack"
+      "spotify"
       "zoom"
     ];
     onActivation.cleanup = "uninstall";
