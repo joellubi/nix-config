@@ -114,10 +114,6 @@ in {
       userSettings = {
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";
-        "cmake.pinnedCommands" = [
-          "workbench.action.tasks.configureTaskRunner"
-          "workbench.action.tasks.runTask"
-        ];
       };
       extensions = with pkgs.vscode-extensions; [
         eamodio.gitlens

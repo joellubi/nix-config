@@ -7,7 +7,7 @@ let
   isLinux = pkgs.stdenv.isLinux;
 in {
 
-  imports = [ ../../modules ];
+  imports = [ ../../modules/home-manager ];
 
   modules.firefox.enable = !isDarwin;
   overrides.vscode.unfree = isDarwin;
