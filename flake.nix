@@ -15,12 +15,12 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: let
+  outputs = { self, ... }@inputs: let
     # Overlays is the list of overlays we want to apply from flake inputs.
     overlays = [];
 
     mkSystem = import ./lib/mksystem.nix {
-      inherit overlays nixpkgs inputs self;
+      inherit inputs overlays self;
     };
   in {
     nixosConfigurations.baboon = mkSystem {

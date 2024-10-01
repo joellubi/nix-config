@@ -1,4 +1,4 @@
-{ nixpkgs, overlays, inputs, self }:
+{ inputs, overlays, self }:
 
 {
   system,
@@ -14,7 +14,7 @@ let
   userHMConfig = ../users/${user}/home-manager.nix;
 
   # NixOS vs nix-darwin functions
-  systemFunc = if darwin then inputs.darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
+  systemFunc = if darwin then inputs.darwin.lib.darwinSystem else inputs.nixpkgs.lib.nixosSystem;
   home-manager = if darwin then inputs.home-manager.darwinModules else inputs.home-manager.nixosModules;
 in systemFunc rec {
   inherit system;
