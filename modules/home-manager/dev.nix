@@ -111,12 +111,4 @@ in {
 
   };
 
-  # services.xremap = {
-  #   withX11 = true;
-  #   config = {
-  #     modmap = [
-  #       { remap = { "leftalt" = "leftctrl"; }; }
-  #     ];
-  #   };
-  # };
 }

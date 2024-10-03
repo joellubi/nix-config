@@ -10,8 +10,8 @@
 let
   # The config files for this system.
   machineConfig = import ./mkmachine.nix machine;
-  userOSConfig = ../users/${user}/${if darwin then "darwin" else "nixos" }.nix;
-  userHMConfig = ../users/${user}/home-manager.nix;
+  userOSConfig = import ../users/${user}/${if darwin then "darwin" else "nixos" }.nix { inherit inputs; };
+  userHMConfig = import ../users/${user}/home-manager.nix { inherit inputs; };
 
   # NixOS vs nix-darwin functions
   systemFunc = if darwin then inputs.darwin.lib.darwinSystem else inputs.nixpkgs.lib.nixosSystem;
@@ -35,9 +35,7 @@ in systemFunc rec {
     home-manager.home-manager {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-      home-manager.users.${user} = import userHMConfig {
-        inputs = inputs;
-      };
+      home-manager.users.${user} = userHMConfig;
     }
   ];
 }

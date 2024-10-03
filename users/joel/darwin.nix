@@ -1,4 +1,6 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
+
+{ pkgs, ... }:
 
 {
   homebrew = {
