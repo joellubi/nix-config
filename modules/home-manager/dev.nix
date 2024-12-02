@@ -17,16 +17,24 @@ in {
     home.packages = [
       pkgs.curl
       pkgs.delve
+      pkgs.docker-compose
       pkgs.go
       pkgs.google-cloud-sdk
       pkgs.gotools
       pkgs.graphviz
+      pkgs.jq
+      pkgs.kubectl
       pkgs.lf
       pkgs.nixd
+      pkgs.postgresql_16
+      pkgs.redis
+      pkgs.rustup
+      pkgs.terraform
       pkgs.tree
       pkgs.vim
       pkgs.wget
       pkgs.wireguard-tools
+      pkgs.yarn
     ] ++ (lib.optionals isLinux [
       pkgs.xclip
       pkgs.spotify
@@ -107,6 +115,18 @@ in {
       enable = true;
       enableZshIntegration = true;
       nix-direnv.enable = true;
+    };
+
+    programs.poetry = {
+      enable = true;
+      settings = {
+        virtualenvs.create = true;
+        virtualenvs.in-project = true;
+      };
+    };
+
+    programs.awscli = {
+      enable = true;
     };
 
   };
