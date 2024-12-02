@@ -103,6 +103,34 @@ in {
         mkhl.direnv
         ms-vscode.cpptools-extension-pack
       ];
+      keybindings = (
+        lib.optionals isLinux [
+          {
+            key = "shift+alt+up";
+            command = "editor.action.copyLinesUpAction";
+            when = "editorTextFocus && !editorReadonly";
+          }
+          {
+            key = "shift+alt+down";
+            command = "editor.action.copyLinesDownAction";
+            when = "editorTextFocus && !editorReadonly";
+          }
+          {
+            key = "ctrl+c";
+            command = "workbench.action.terminal.copySelection";
+            when = "terminalTextSelectedInFocused || terminalFocus && terminalHasBeenCreated && terminalTextSelected || terminalFocus && terminalProcessSupported && terminalTextSelected || terminalFocus && terminalTextSelected && terminalTextSelectedInFocused || terminalHasBeenCreated && terminalTextSelected && terminalTextSelectedInFocused || terminalProcessSupported && terminalTextSelected && terminalTextSelectedInFocused";
+          }
+          {
+            key = "ctrl+v";
+            command = "workbench.action.terminal.paste";
+            when = "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported";
+          }
+          {
+            key = "ctrl+backspace";
+            command = "deleteAllLeft";
+          }
+        ]
+      );
     };
 
 

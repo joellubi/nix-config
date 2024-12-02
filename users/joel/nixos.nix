@@ -10,7 +10,26 @@
     withX11 = true;
     config = {
       modmap = [
-        { remap = { "CapsLock" = "Esc"; }; }
+        {
+          remap = {
+            "CapsLock" = "LeftMeta";
+            "LeftMeta" = "LeftAlt";
+            "LeftAlt" = "LeftCtrl";
+          };
+        }
+      ];
+      keymap = [
+        {
+          remap = {
+            "Ctrl-Left" = "Home";
+            "Ctrl-Right" = "End";
+            "Shift-Ctrl-Left" = "Shift-Home";
+            "Shift-Ctrl-Right" = "Shift-End";
+            "Alt-Left" = "Ctrl-Left";
+            "Alt-Right" = "Ctrl-Right";
+            "Alt-Backspace" = "Ctrl-Backspace";
+          };
+        }
       ];
     };
   };
