@@ -38,5 +38,12 @@
       system = "aarch64-darwin";
       darwin = true;
     };
+
+    darwinConfigurations.yeti = mkSystem {
+      machine = "yeti";
+      user   = "jlubinitsky";
+      system = "aarch64-darwin";
+      darwin = true;
+    };
   };
 }
