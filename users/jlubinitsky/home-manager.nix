@@ -7,7 +7,7 @@
   imports =
     [
       ../../modules/home-manager/shell.nix
-      # ./vscode.nix
+      ../../modules/home-manager/packages.nix
     ];
 
   home.stateVersion = "23.11";
