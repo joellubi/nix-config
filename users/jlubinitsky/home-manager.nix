@@ -6,7 +6,7 @@
 
   imports =
     [
-      ./shell.nix
+      ../../modules/home-manager/shell.nix
       # ./vscode.nix
     ];
 
