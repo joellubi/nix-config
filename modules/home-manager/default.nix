@@ -4,8 +4,13 @@
 
   imports =
     [
-      ./dev.nix
+      ./aws.nix
       ./firefox.nix
+      ./git.nix
+      ./packages.nix
+      ./poetry.nix
+      ./shell.nix
+      ./vscode.nix
     ];
 
   # Home-manager 22.11 requires this be set. We never set it so we have
