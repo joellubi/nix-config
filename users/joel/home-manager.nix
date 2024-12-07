@@ -10,12 +10,7 @@ in {
   imports = [ ../../modules/home-manager ];
 
   modules.firefox.enable = !isDarwin;
+  modules.gnome.enable = isLinux;
   overrides.vscode.unfree = isDarwin;
 
-  programs.gnome-shell = {
-    enable = isLinux;
-    extensions = [
-      { package = pkgs.gnomeExtensions.vitals; }
-    ];
-  };
 }

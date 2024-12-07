@@ -7,6 +7,7 @@
       ./aws.nix
       ./firefox.nix
       ./git.nix
+      ./gnome.nix
       ./packages.nix
       ./poetry.nix
       ./shell.nix
