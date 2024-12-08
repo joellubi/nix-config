@@ -21,6 +21,7 @@ in {
       pkgs.gotools
       pkgs.graphviz
       pkgs.jq
+      pkgs.just
       pkgs.kubectl
       pkgs.lf
       pkgs.nixd

@@ -11,7 +11,7 @@ let
   # The config files for this system.
   machineConfig = import ./mkmachine.nix machine;
   userOSConfig = import ../users/${user}/${if darwin then "darwin" else "nixos" }.nix { inherit inputs; };
-  userHMConfig = import ../users/${user}/home-manager.nix { inherit inputs; };
+  userHMConfig = import ../users/${user}/home-manager.nix { inherit inputs machine; };
 
   # NixOS vs nix-darwin functions
   systemFunc = if darwin then inputs.darwin.lib.darwinSystem else inputs.nixpkgs.lib.nixosSystem;

@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, machine, ... }:
 
 { config, lib, pkgs, ... }:
 
@@ -11,6 +11,7 @@ in {
 
   modules.firefox.enable = !isDarwin;
   modules.gnome.enable = isLinux;
+  modules.just = { inherit machine; darwin = isDarwin; };
   overrides.vscode.unfree = isDarwin;
 
 }

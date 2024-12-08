@@ -8,6 +8,7 @@
       ./firefox.nix
       ./git.nix
       ./gnome.nix
+      ./just.nix
       ./packages.nix
       ./poetry.nix
       ./shell.nix
