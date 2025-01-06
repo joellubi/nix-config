@@ -1,7 +1,13 @@
 { config, lib, pkgs, ... }:
-with lib; {
+with lib;
+let
+  cfg = config.modules.git;
+in {
 
-  options = {};
+  options.modules.git = {
+    name = mkOption { type = types.str; default = "Joel Lubinitsky"; };
+    email = mkOption { type = types.str; default = "joellubi@gmail.com"; };
+  };
 
   config = {
 
@@ -11,8 +17,8 @@ with lib; {
 
     programs.git = {
       enable = true;
-      userName = "Joel Lubinitsky";
-      userEmail = "joellubi@gmail.com";
+      userName = cfg.name;
+      userEmail = cfg.email;
       extraConfig = {
         init.defaultBranch = "main";
       };
