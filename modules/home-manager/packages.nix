@@ -16,6 +16,7 @@ in {
       pkgs.curl
       pkgs.delve
       pkgs.docker-compose
+      pkgs.duckdb
       pkgs.go
       pkgs.google-cloud-sdk
       pkgs.gotools

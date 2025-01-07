@@ -44,6 +44,10 @@ with lib; {
     programs.kitty = {
       enable = true;
       themeFile = "SpaceGray_Eighties";
+      settings = {
+        "mouse_map left" = "click ungrabbed";
+        "mouse_map cmd+left" = "click ungrabbed mouse_click_url";
+      };
     };
 
     programs.direnv = {
