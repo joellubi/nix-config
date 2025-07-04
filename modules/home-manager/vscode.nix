@@ -33,6 +33,7 @@ in {
             ms-pyright.pyright
             mkhl.direnv
             ms-vscode.cpptools-extension-pack
+            ms-vscode-remote.remote-ssh
           ];
           keybindings = (
             lib.optionals isLinux [
