@@ -16,7 +16,7 @@ in {
   config = {
 
     home.file.justfile.text = ''
-      config := "path:$HOME/${cfg.flake-path}#${cfg.machine}"
+      config := "$HOME/${cfg.flake-path}#${cfg.machine}"
       system := "${if cfg.darwin then "darwin" else "nixos" }"
 
       dry-build:

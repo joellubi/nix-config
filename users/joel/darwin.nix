@@ -8,7 +8,6 @@
     casks  = [
       "autodesk-fusion"
       "bambu-studio"
-      "docker"
       "google-chrome"
       "logi-options+"
       "openvpn-connect"
@@ -25,4 +24,6 @@
   users.users.joel = {
     home = "/Users/joel";
   };
+
+  system.primaryUser = "joel";
 }
