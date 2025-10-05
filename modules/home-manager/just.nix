@@ -29,7 +29,7 @@ in {
         darwin-rebuild build --flake {{config}} --dry-run
       
       switch-darwin:
-        darwin-rebuild switch --flake {{config}}
+        sudo darwin-rebuild switch --flake {{config}}
       
       dry-build-nixos:
         sudo nixos-rebuild dry-build --flake {{config}}

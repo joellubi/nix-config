@@ -34,6 +34,7 @@ in {
             mkhl.direnv
             ms-vscode.cpptools-extension-pack
             ms-vscode-remote.remote-ssh
+            redhat.vscode-yaml
           ];
           keybindings = (
             lib.optionals isLinux [
@@ -66,7 +67,5 @@ in {
         };
       };
     };
-
   };
-
 }

@@ -2,6 +2,7 @@
   # We install Nix using a separate installer so we don't want nix-darwin
   # to manage it for us. This tells nix-darwin to just use whatever is running.
 
+  # Auto upgrade nix package and the daemon service.
   # nix.package = pkgs.nix;
 
   security.pam.services.sudo_local.touchIdAuth = true;

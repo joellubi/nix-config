@@ -14,6 +14,7 @@ in {
 
     home = {
       packages = [
+        pkgs.awscli2
         pkgs.curl
         pkgs.delve
         pkgs.docker-compose
@@ -33,10 +34,12 @@ in {
         pkgs.rustup
         pkgs.terraform
         pkgs.tree
+        pkgs.typescript
         pkgs.vim
         pkgs.wget
         pkgs.wireguard-tools
         pkgs.yarn
+        pkgs.youplot
       ] ++ (lib.optionals isLinux [
         pkgs.xclip
         pkgs.spotify
