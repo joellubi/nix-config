@@ -42,7 +42,7 @@ in {
         pkgs.spotify
       ]);
       shellAliases = {
-        k = "kubectl";
+        k = "sudo k3s kubectl";
       };
     };
 

@@ -88,6 +88,12 @@
   services.k3s = {
     enable = true;
     role = "server";
+    extraFlags = toString [
+      "--tls-san 192.168.4.100"
+      "--disable servicelb"
+      "--disable traefik"
+      "--node-ip 192.168.1.80"
+    ];
   };
 
   # Open ports in the firewall.
