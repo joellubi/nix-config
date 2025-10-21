@@ -9,6 +9,7 @@
 
 let
   # The config files for this system.
+  secretsConfig = import ./mksecrets.nix user;
   machineConfig = import ./mkmachine.nix machine;
   userOSConfig = import ../users/${user}/${if darwin then "darwin" else "nixos" }.nix { inherit inputs; };
   userHMConfig = import ../users/${user}/home-manager.nix { inherit inputs machine; };
@@ -16,6 +17,7 @@ let
   # NixOS vs nix-darwin functions
   systemFunc = if darwin then inputs.darwin.lib.darwinSystem else inputs.nixpkgs.lib.nixosSystem;
   home-manager = if darwin then inputs.home-manager.darwinModules else inputs.home-manager.nixosModules;
+  sops-nix = if darwin then inputs.sops-nix.darwinModules.sops else inputs.sops-nix.nixosModules.sops;
 in systemFunc rec {
   inherit system;
 
@@ -32,6 +34,8 @@ in systemFunc rec {
 
     machineConfig
     userOSConfig
+    sops-nix
+    secretsConfig
     home-manager.home-manager {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
