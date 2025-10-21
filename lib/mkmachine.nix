@@ -10,4 +10,6 @@ in
                 (fs.maybeMissing ../machines/${name}/hardware-configuration.nix)
               ]
             );
+
+  networking.hostName = name;
 }
