@@ -12,7 +12,11 @@ in
     sops = {
       defaultSopsFile = ../../secrets.yaml;
       defaultSopsFormat = "yaml";
-      age.keyFile = "/Users/${cfg.user}/Library/Application Support/sops/age/keys.txt"; # TODO: darwin-specific path
+      age = {
+        keyFile = "${config.users.users.${cfg.user}.home}/.config/sops/age/keys.txt";
+        sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+        generateKey = true;
+      };
 
       secrets."${cfg.user}/email" = {};
     };

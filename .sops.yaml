@@ -1,7 +1,9 @@
 keys:
   - &admin age1hfmf4p3klepyhtp878zlhpr0xhzeufm4tg7037mqeg4zvjmzlumsu5fwpu
+  - &baboon age15sk3yp53t8vwj4w0mwmv7u2jzh43pkq5guh836vdjvh3pthg05fqerhjgt
 creation_rules:
   - path_regex: secrets.yaml$
     key_groups:
       - age:
         - *admin
+        - *baboon
