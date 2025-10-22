@@ -16,6 +16,11 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    systems.url = "github:nix-systems/default";
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
   };
 
   outputs = { self, ... }@inputs: let
@@ -29,7 +34,9 @@
     mkSystem = import ./lib/mksystem.nix {
       inherit inputs overlays self;
     };
-  in {
+  in
+  inputs.nixpkgs.lib.attrsets.recursiveUpdate
+  {
     nixosConfigurations.baboon = mkSystem {
       machine = "baboon";
       user    = "joel";
@@ -49,5 +56,22 @@
       system = "aarch64-darwin";
       darwin = true;
     };
-  };
+  }
+  (
+    inputs.flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = inputs.nixpkgs.legacyPackages.${system};
+      in
+      {
+        devShells.default = pkgs.mkShell
+        {
+          packages = [
+            pkgs.sops
+            pkgs.ssh-to-age
+          ];
+        };
+      }
+    )
+  );
 }
