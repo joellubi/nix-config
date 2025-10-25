@@ -14,7 +14,7 @@ in
       defaultSopsFormat = "yaml";
       age = {
         keyFile = "${config.users.users.${cfg.user}.home}/.config/sops/age/keys.txt";
-        sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+        sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ]; # TODO: Maybe need to change for darwin
         generateKey = true;
       };
 
