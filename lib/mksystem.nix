@@ -40,6 +40,9 @@ in systemFunc rec {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.users.${user} = userHMConfig;
+      home-manager.extraSpecialArgs = { inherit machine; };
     }
   ];
+
+  specialArgs = { inherit inputs machine; };
 }

@@ -28,6 +28,7 @@ in {
         pkgs.kubectl
         pkgs.lf
         pkgs.nixd
+        pkgs.nixfmt-rfc-style
         pkgs.nmap
         pkgs.postgresql_16
         pkgs.redis

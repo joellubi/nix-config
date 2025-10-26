@@ -1,7 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, machine, ... }:
 with lib;
 let
   isLinux = pkgs.stdenv.isLinux;
+  isDarwin = pkgs.stdenv.isDarwin;
 in {
 
   options = {
@@ -23,6 +24,24 @@ in {
           userSettings = {
             "nix.enableLanguageServer" = true;
             "nix.serverPath" = "nixd";
+            "nix.serverSettings" = {
+              "nixd" = {
+                "formatting" = {
+                  "command" = [ "nixfmt" ];
+                };
+                "options" = {
+                  "nixos" = {
+                    "expr" = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.${machine}.options";
+                  };
+                  "nix-darwin" = {
+                    "expr" = "(builtins.getFlake (builtins.toString ./.)).darwinConfigurations.${machine}.options";
+                  };
+                  "home-manager" = {
+                    "expr" = "(builtins.getFlake (builtins.toString ./.)).${if isDarwin then "darwinConfigurations" else "nixosConfigurations" }.${machine}.options.home-manager.users.type.getSubOptions []";
+                  };
+                };
+              };
+            };
             "diffEditor.ignoreTrimWhitespace" = false;
           };
           extensions = with pkgs.vscode-extensions; [
