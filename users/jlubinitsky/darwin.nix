@@ -15,4 +15,6 @@
   users.users.jlubinitsky = {
     home = "/Users/jlubinitsky";
   };
+
+  system.primaryUser = "jlubinitsky";
 }

@@ -2,6 +2,7 @@
 with lib;
 let
   isLinux = pkgs.stdenv.isLinux;
+  isDarwin = pkgs.stdenv.isDarwin;
 in {
 
   options = {};
@@ -44,6 +45,8 @@ in {
       ] ++ (lib.optionals isLinux [
         pkgs.xclip
         pkgs.spotify
+      ]) ++ (lib.optionals isDarwin [
+        pkgs.iproute2mac
       ]);
       shellAliases = {
         k = "sudo k3s kubectl";
