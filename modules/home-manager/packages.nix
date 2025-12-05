@@ -1,11 +1,17 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
 let
   isLinux = pkgs.stdenv.isLinux;
   isDarwin = pkgs.stdenv.isDarwin;
-in {
+in
+{
 
-  options = {};
+  options = { };
 
   config = {
 
@@ -24,6 +30,7 @@ in {
         pkgs.google-cloud-sdk
         pkgs.gotools
         pkgs.graphviz
+        pkgs.grpcurl
         pkgs.jq
         pkgs.just
         pkgs.kubectl
@@ -31,6 +38,7 @@ in {
         pkgs.nixd
         pkgs.nixfmt-rfc-style
         pkgs.nmap
+        pkgs.neovim
         pkgs.postgresql_16
         pkgs.redis
         pkgs.rustup
@@ -42,10 +50,12 @@ in {
         pkgs.wireguard-tools
         pkgs.yarn
         pkgs.youplot
-      ] ++ (lib.optionals isLinux [
+      ]
+      ++ (lib.optionals isLinux [
         pkgs.xclip
         pkgs.spotify
-      ]) ++ (lib.optionals isDarwin [
+      ])
+      ++ (lib.optionals isDarwin [
         pkgs.iproute2mac
       ]);
       shellAliases = {

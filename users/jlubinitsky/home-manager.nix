@@ -1,19 +1,27 @@
 { inputs, machine, ... }:
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
 
-  imports =
-    [
-      ../../modules/home-manager/git.nix
-      ../../modules/home-manager/just.nix
-      ../../modules/home-manager/packages.nix
-      ../../modules/home-manager/poetry.nix
-      ../../modules/home-manager/shell.nix
-    ];
+  imports = [
+    ../../modules/home-manager/git.nix
+    ../../modules/home-manager/just.nix
+    ../../modules/home-manager/packages.nix
+    ../../modules/home-manager/poetry.nix
+    ../../modules/home-manager/shell.nix
+    ../../modules/home-manager/dotfiles.nix
+  ];
 
-  modules.just = { inherit machine; darwin = true; };
+  modules.just = {
+    inherit machine;
+    darwin = true;
+  };
 
   home.packages = [
     pkgs.python311
