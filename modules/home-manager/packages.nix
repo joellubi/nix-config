@@ -30,6 +30,7 @@ in
         pkgs.google-cloud-sdk
         pkgs.gotools
         pkgs.graphviz
+        pkgs.grpcui
         pkgs.grpcurl
         pkgs.jq
         pkgs.just

@@ -76,6 +76,16 @@
                     { pkgs, ... }:
                     {
                       config.vim = {
+
+                        keymaps = [
+                          {
+                            key = "-";
+                            mode = "n";
+                            action = "<CMD>Oil<CR>";
+                            desc = "Open parent directory";
+                          }
+                        ];
+
                         lsp = {
                           enable = true;
                           formatOnSave = true;
@@ -140,7 +150,6 @@
 
                         autopairs.nvim-autopairs.enable = true;
                         autocomplete.blink-cmp.enable = true;
-                        filetree.neo-tree.enable = true;
                         tabline.nvimBufferline.enable = true;
                         treesitter.context.enable = true;
 
@@ -156,6 +165,8 @@
                           gitsigns.enable = true;
                         };
 
+                        minimap.codewindow.enable = true;
+
                         notify = {
                           nvim-notify.enable = true;
                         };
@@ -164,12 +175,16 @@
                           borders.enable = true;
                           noice.enable = true;
                           illuminate.enable = true;
-                          smartcolumn.enable = true;
+                          smartcolumn = {
+                            enable = true;
+                            setupOpts.colorcolumn = "180";
+                          };
                           fastaction.enable = true;
                         };
 
                         utility = {
                           outline.aerial-nvim.enable = true;
+                          oil-nvim.enable = true;
                         };
 
                       };

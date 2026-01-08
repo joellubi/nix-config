@@ -8,7 +8,7 @@
     taps = [
       { name = "nikitabobko/tap"; }
     ];
-    casks  = [
+    casks = [
       "ghostty"
       "logi-options+"
       "nikitabobko/tap/aerospace"
@@ -21,10 +21,15 @@
     home = "/Users/jlubinitsky";
   };
 
-  system.primaryUser = "jlubinitsky";
-  system.defaults.NSGlobalDomain = {
-   KeyRepeat = 2;
-   InitialKeyRepeat = 15;
-   ApplePressAndHoldEnabled = false;
+  system = {
+    primaryUser = "jlubinitsky";
+    defaults = {
+      dock.autohide = true;
+      NSGlobalDomain = {
+        KeyRepeat = 2;
+        InitialKeyRepeat = 15;
+        ApplePressAndHoldEnabled = false;
+      };
+    };
   };
 }
