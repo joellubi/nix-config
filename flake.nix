@@ -21,7 +21,7 @@
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
     };
-    nvf.url = "github:notashelf/nvf";
+    nvf.url = "github:notashelf/nvf?ref=v0.8";
   };
 
   outputs =
@@ -113,14 +113,14 @@
 
                           nix = {
                             enable = true;
-                            format.type = "nixfmt";
+                            format.type = [ "nixfmt" ];
                             lsp = {
                               server = "nixd";
-                              options = {
-                                #   nixpkgs.expr = "import <nixpkgs> { }";
-                                nix-darwin.expr = "(builtins.getFlake (toString ./.)).darwinConfigurations.yeti.options";
-                                home-manager.expr = "(builtins.getFlake (toString ./.)).darwinConfigurations.yeti.users.type.getSubOptions []";
-                              };
+                              # options = {
+                              #   #   nixpkgs.expr = "import <nixpkgs> { }";
+                              #   nix-darwin.expr = "(builtins.getFlake (toString ./.)).darwinConfigurations.yeti.options";
+                              #   home-manager.expr = "(builtins.getFlake (toString ./.)).darwinConfigurations.yeti.users.type.getSubOptions []";
+                              # };
                             };
                           };
                           markdown.enable = true;
