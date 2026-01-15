@@ -2,14 +2,14 @@
   description = "NixOS systems and tools";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix = {
@@ -182,9 +182,16 @@
                           fastaction.enable = true;
                         };
 
+                        comments.comment-nvim.enable = true;
+
                         utility = {
+                          motion.flash-nvim.enable = true;
                           outline.aerial-nvim.enable = true;
                           oil-nvim.enable = true;
+                          surround = {
+                            enable = true;
+                            useVendoredKeybindings = true;
+                          };
                         };
 
                       };
