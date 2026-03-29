@@ -55,6 +55,7 @@ in
       ++ (lib.optionals isLinux [
         pkgs.xclip
         pkgs.spotify
+        pkgs.ghostty
       ])
       ++ (lib.optionals isDarwin [
         pkgs.iproute2mac
