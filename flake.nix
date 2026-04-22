@@ -126,6 +126,7 @@
                           markdown.enable = true;
                           go.enable = true;
                           python.enable = true;
+                          yaml.enable = true;
                         };
 
                         visuals = {
