@@ -27,20 +27,15 @@ in
         pkgs.duckdb
         pkgs.go
         pkgs.gotools
-        pkgs.graphviz
         pkgs.grpcui
         pkgs.grpcurl
         pkgs.jq
         pkgs.just
-        pkgs.kubectl
-        pkgs.lf
         pkgs.mitmproxy
         pkgs.nixd
         pkgs.nixfmt-rfc-style
-        pkgs.nmap
         pkgs.neovim
         pkgs.tree
-        pkgs.vim
         pkgs.wget
         pkgs.wireguard-tools
         pkgs.youplot
