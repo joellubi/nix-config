@@ -36,6 +36,7 @@ in
         pkgs.just
         pkgs.kubectl
         pkgs.lf
+        pkgs.mitmproxy
         pkgs.nixd
         pkgs.nixfmt-rfc-style
         pkgs.nmap
