@@ -16,8 +16,8 @@ in {
 
     programs.git = {
       enable = true;
-      userName = cfg.name;
-      extraConfig = {
+      settings = {
+        user.name = cfg.name;
         init.defaultBranch = "main";
       };
       includes = [

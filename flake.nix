@@ -30,8 +30,8 @@
       # Overlays is the list of overlays we want to apply from flake inputs.
       overlays = [
         (final: prev: rec {
-          neovim = self.packages.${prev.system}.neovim;
-          #go = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.go_1_25;
+          neovim = self.packages.${prev.stdenv.hostPlatform.system}.neovim;
+          #go = inputs.nixpkgs-unstable.legacyPackages.${prev.stdenv.hostPlatform.system}.go_1_25;
         })
       ];
 
@@ -115,7 +115,7 @@
                             enable = true;
                             format.type = [ "nixfmt" ];
                             lsp = {
-                              server = "nixd";
+                              servers = [ "nixd" ];
                               # options = {
                               #   #   nixpkgs.expr = "import <nixpkgs> { }";
                               #   nix-darwin.expr = "(builtins.getFlake (toString ./.)).darwinConfigurations.yeti.options";
