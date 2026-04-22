@@ -31,6 +31,7 @@
       overlays = [
         (final: prev: rec {
           neovim = self.packages.${prev.stdenv.hostPlatform.system}.neovim;
+          direnv = prev.direnv.overrideAttrs (_: { doCheck = false; });
           #go = inputs.nixpkgs-unstable.legacyPackages.${prev.stdenv.hostPlatform.system}.go_1_25;
         })
       ];
@@ -123,7 +124,10 @@
                               # };
                             };
                           };
-                          markdown.enable = true;
+                          markdown = {
+                            enable = true;
+                            lsp.enable = false;
+                          };
                           go.enable = true;
                           python.enable = true;
                           yaml.enable = true;
