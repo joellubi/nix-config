@@ -1,19 +1,22 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
 
-  imports =
-    [
-      ./aws.nix
-      ./firefox.nix
-      ./git.nix
-      ./gnome.nix
-      ./just.nix
-      ./packages.nix
-      ./poetry.nix
-      ./shell.nix
-      ./vscode.nix
-    ];
+  imports = [
+    ./aws.nix
+    ./firefox.nix
+    ./git.nix
+    ./gnome.nix
+    ./just.nix
+    ./packages.nix
+    ./poetry.nix
+    ./shell.nix
+  ];
 
   # Home-manager 22.11 requires this be set. We never set it so we have
   # to use the old state version.
