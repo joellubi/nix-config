@@ -199,7 +199,10 @@
                         utility = {
                           motion.flash-nvim.enable = true;
                           outline.aerial-nvim.enable = true;
-                          oil-nvim.enable = true;
+                          oil-nvim = {
+                            enable = true;
+                            setupOpts.view_options.show_hidden = true;
+                          };
                           surround = {
                             enable = true;
                             useVendoredKeybindings = true;
