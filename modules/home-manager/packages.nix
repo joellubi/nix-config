@@ -35,6 +35,7 @@ in
         pkgs.nixd
         pkgs.nixfmt-rfc-style
         pkgs.neovim
+        pkgs.oauth2c
         pkgs.tree
         pkgs.wget
         pkgs.wireguard-tools
