@@ -31,7 +31,11 @@
       overlays = [
         (final: prev: rec {
           neovim = self.packages.${prev.stdenv.hostPlatform.system}.neovim;
-          direnv = prev.direnv.overrideAttrs (_: { doCheck = false; });
+          direnv = prev.direnv.overrideAttrs (_: {
+            doCheck = false;
+          });
+          pi-coding-agent =
+            inputs.nixpkgs-unstable.legacyPackages.${prev.stdenv.hostPlatform.system}.pi-coding-agent;
           #go = inputs.nixpkgs-unstable.legacyPackages.${prev.stdenv.hostPlatform.system}.go_1_25;
         })
       ];

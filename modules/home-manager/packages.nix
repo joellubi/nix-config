@@ -36,6 +36,7 @@ in
         pkgs.nixfmt-rfc-style
         pkgs.neovim
         pkgs.oauth2c
+        pkgs.pi-coding-agent
         pkgs.tree
         pkgs.wget
         pkgs.wireguard-tools

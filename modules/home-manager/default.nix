@@ -9,6 +9,7 @@
 
   imports = [
     ./aws.nix
+    ./dotfiles.nix
     ./firefox.nix
     ./git.nix
     ./gnome.nix
