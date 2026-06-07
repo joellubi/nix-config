@@ -41,6 +41,7 @@ in
         pkgs.wget
         pkgs.wireguard-tools
         pkgs.youplot
+        pkgs.zig
       ]
       ++ (lib.optionals isLinux [
         pkgs.xclip
