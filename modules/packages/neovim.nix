@@ -65,6 +65,7 @@
                     go.enable = true;
                     python.enable = true;
                     yaml.enable = true;
+                    zig.enable = true;
                   };
 
                   visuals = {
