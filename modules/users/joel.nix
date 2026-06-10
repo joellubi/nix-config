@@ -24,7 +24,7 @@ let
     hjem.users.${userName} = {
       directory = "/Users/${userName}";
       files = {
-        ".config/ghostty".source = ./dotfiles/ghostty;
+        ".config/ghostty/config".source = ./dotfiles/ghostty;
         ".pi/agent/AGENTS.md".source = ./dotfiles/pi-agent-AGENTS.md;
       };
     };
