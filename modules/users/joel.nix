@@ -21,12 +21,9 @@ let
     };
 
   home = {
-    hjem.users.${userName} = {
-      directory = "/Users/${userName}";
-      files = {
-        ".config/ghostty/config".source = ./dotfiles/ghostty;
-        ".pi/agent/AGENTS.md".source = ./dotfiles/pi-agent-AGENTS.md;
-      };
+    hjem.users.${userName}.files = {
+      ".config/ghostty/config".source = ./dotfiles/ghostty;
+      ".pi/agent/AGENTS.md".source = ./dotfiles/pi-agent-AGENTS.md;
     };
   };
 in
@@ -48,6 +45,7 @@ in
         ];
         shell = pkgs.zsh;
       };
+      hjem.users.${userName}.directory = "/home/${userName}";
     };
 
   flake.modules.darwin.${userName} = {
@@ -65,6 +63,7 @@ in
         ApplePressAndHoldEnabled = false;
       };
     };
+    hjem.users.${userName}.directory = "/Users/${userName}";
     homebrew = {
       enable = true;
       taps = [

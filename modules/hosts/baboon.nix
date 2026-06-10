@@ -12,6 +12,7 @@ in
       nixos.secrets
       nixos.joel
       inputs.home-manager.nixosModules.home-manager
+      inputs.hjem.nixosModules.default
       {
         networking.hostName = "baboon";
 
