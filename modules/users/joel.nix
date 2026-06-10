@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 let
   userName = "joel";
 
@@ -29,8 +29,9 @@ in
   flake.modules.nixos.${userName} =
     { pkgs, ... }:
     {
-      imports = [
+      imports = with config.flake.modules.nixos; [
         home
+        programs
       ];
       users.users.${userName} = {
         isNormalUser = true;
@@ -46,8 +47,9 @@ in
     };
 
   flake.modules.darwin.${userName} = {
-    imports = [
+    imports = with config.flake.modules.darwin; [
       home
+      programs
     ];
     users.users.${userName}.home = "/Users/${userName}";
     system.primaryUser = userName;

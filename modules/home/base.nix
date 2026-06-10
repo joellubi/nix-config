@@ -4,7 +4,6 @@
   # (home/joel.nix, home/jlubinitsky.nix) import this and add their extras.
   flake.modules.homeManager.base = {
     imports = with config.flake.modules.homeManager; [
-      just
       packages
       poetry
       shell

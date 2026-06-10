@@ -18,7 +18,6 @@
           pkgs.grpcui
           pkgs.grpcurl
           pkgs.jq
-          pkgs.just
           pkgs.mitmproxy
           pkgs.nixd
           pkgs.nixfmt-rfc-style

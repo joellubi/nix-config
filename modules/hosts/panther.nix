@@ -25,10 +25,6 @@ in
         home-manager.useUserPackages = true;
         home-manager.users.joel = {
           imports = [ homeManager.joel ];
-          modules.just = {
-            machine = "panther";
-            darwin = true;
-          };
         };
       }
     ];
