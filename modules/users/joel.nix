@@ -2,37 +2,34 @@
 let
   userName = "joel";
 
-  # Per-user sops: age keyFile, email secret, and a gitconfig include template.
-  # Lives with the user (not modules/secrets.nix) because it depends on the
-  # user's home directory and username.
-  secrets =
-    { config, ... }:
+  home =
+    { pkgs, lib, ... }:
     {
-      sops.age.keyFile = "${config.users.users.${userName}.home}/.config/sops/age/keys.txt";
-      sops.secrets."${userName}/email" = { };
-      sops.templates.gitconfig = {
-        owner = config.users.users.${userName}.name;
-        path = "${config.users.users.${userName}.home}/.config/secure/config.inc";
-        content = ''
-          [user]
-                  email = "${config.sops.placeholder."${userName}/email"}"
-        '';
+      hjem.users.${userName}.files = {
+        ".config/ghostty/config".source = ./dotfiles/ghostty;
+        ".pi/agent/AGENTS.md".source = ./dotfiles/pi-agent-AGENTS.md;
+        ".config/git/config" = {
+          generator = lib.generators.toGitINI;
+          value = {
+            user = {
+              name = "Joel Lubinitsky";
+              email = "joellubi@gmail.com";
+            };
+            init.defaultBranch = "main";
+            gpg = {
+              format = "openpgp";
+            };
+            "gpg \"opengpg\"".program = pkgs.lib.getExe pkgs.gnupg;
+          };
+        };
       };
     };
-
-  home = {
-    hjem.users.${userName}.files = {
-      ".config/ghostty/config".source = ./dotfiles/ghostty;
-      ".pi/agent/AGENTS.md".source = ./dotfiles/pi-agent-AGENTS.md;
-    };
-  };
 in
 {
   flake.modules.nixos.${userName} =
     { pkgs, ... }:
     {
       imports = [
-        secrets
         home
       ];
       users.users.${userName} = {
@@ -50,7 +47,6 @@ in
 
   flake.modules.darwin.${userName} = {
     imports = [
-      secrets
       home
     ];
     users.users.${userName}.home = "/Users/${userName}";
