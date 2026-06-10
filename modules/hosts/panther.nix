@@ -11,6 +11,7 @@ in
       darwin.secrets
       darwin.joel
       inputs.home-manager.darwinModules.home-manager
+      inputs.hjem.darwinModules.default
       {
         networking.hostName = "panther";
 

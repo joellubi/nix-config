@@ -19,12 +19,25 @@ let
         '';
       };
     };
+
+  home = {
+    hjem.users.${userName} = {
+      directory = "/Users/${userName}";
+      files = {
+        ".config/ghostty".source = ./dotfiles/ghostty;
+        ".pi/agent/AGENTS.md".source = ./dotfiles/pi-agent-AGENTS.md;
+      };
+    };
+  };
 in
 {
   flake.modules.nixos.${userName} =
     { pkgs, ... }:
     {
-      imports = [ secrets ];
+      imports = [
+        secrets
+        home
+      ];
       users.users.${userName} = {
         isNormalUser = true;
         home = "/home/${userName}";
@@ -38,7 +51,10 @@ in
     };
 
   flake.modules.darwin.${userName} = {
-    imports = [ secrets ];
+    imports = [
+      secrets
+      home
+    ];
     users.users.${userName}.home = "/Users/${userName}";
     system.primaryUser = userName;
     system.defaults = {
