@@ -6,6 +6,7 @@ let
   overlay = final: prev: {
     neovim = inputs.self.packages.${prev.stdenv.hostPlatform.system}.neovim;
     zig = inputs.self.packages.${prev.stdenv.hostPlatform.system}.zig;
+    ghostty = inputs.self.packages.${prev.stdenv.hostPlatform.system}.ghostty;
     direnv = prev.direnv.overrideAttrs (_: {
       doCheck = false;
     });
