@@ -11,29 +11,17 @@ let
   };
 in
 {
-  user = {
-    name = userName;
-    fullName = fullName;
+  users.${userName} = {
+    name = fullName;
     email = email;
   };
 
-  flake.modules.nixos.${userName} =
-    { pkgs, ... }:
-    {
-      imports = with config.flake.modules.nixos; [
-        base
-        home
-      ];
-      users.users.${userName} = {
-        isNormalUser = true;
-        description = "Joel Lubinitsky"; # Is this needed?
-        extraGroups = [
-          "networkmanager"
-          "wheel"
-        ];
-        shell = pkgs.zsh;
-      };
-    };
+  flake.modules.nixos.${userName} = {
+    imports = with config.flake.modules.nixos; [
+      base
+      home
+    ];
+  };
 
   flake.modules.darwin.${userName} = {
     imports = with config.flake.modules.darwin; [
