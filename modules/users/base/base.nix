@@ -30,26 +30,25 @@ with lib;
           shouldCreateGitConfig = cfg.name != "" && cfg.email != "";
         in
         {
-          hjem.users.${name}.files = {
-            ".config/ghostty/config".source = ./dotfiles/ghostty;
-          }
-          // lib.optionalAttrs shouldCreateGitConfig {
-            ".config/git/config" = {
-              generator = lib.generators.toGitINI;
-              value = {
-                user = {
-                  name = cfg.name;
-                  email = cfg.email;
+          hjem.users.${name}.files =
+            { }
+            // lib.optionalAttrs shouldCreateGitConfig {
+              ".config/git/config" = {
+                generator = lib.generators.toGitINI;
+                value = {
+                  user = {
+                    name = cfg.name;
+                    email = cfg.email;
+                  };
+                  init.defaultBranch = "main";
+                  gpg = {
+                    format = "openpgp";
+                  };
+                  "gpg \"opengpg\"".program = pkgs.lib.getExe pkgs.gnupg;
                 };
-                init.defaultBranch = "main";
-                gpg = {
-                  format = "openpgp";
-                };
-                "gpg \"opengpg\"".program = pkgs.lib.getExe pkgs.gnupg;
               };
-            };
 
-          };
+            };
         };
       mkPackages =
         pkgs: with pkgs; [
