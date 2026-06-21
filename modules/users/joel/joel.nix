@@ -17,15 +17,13 @@ in
   };
 
   flake.modules.nixos.${userName} = {
-    imports = with config.flake.modules.nixos; [
-      base
+    imports = [
       home
     ];
   };
 
   flake.modules.darwin.${userName} = {
-    imports = with config.flake.modules.darwin; [
-      base
+    imports = [
       home
     ];
     homebrew = {

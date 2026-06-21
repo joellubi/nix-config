@@ -54,6 +54,7 @@ with lib;
         pkgs: with pkgs; [
           git
           ghostty
+          nh
         ];
     in
     {
