@@ -17,9 +17,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nvf.url = "github:notashelf/nvf?ref=v0.8";
-
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
     import-tree.url = "github:vic/import-tree";
     hjem = {
       url = "github:feel-co/hjem";
@@ -27,5 +28,19 @@
     };
   };
 
-  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
+  outputs =
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } (
+      let
+        flakeModules.default = inputs.import-tree ./modules;
+      in
+      {
+        imports = [
+          flakeModules.default
+        ];
+        flake = {
+          inherit flakeModules;
+        };
+      }
+    );
 }
