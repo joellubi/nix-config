@@ -1,18 +1,15 @@
 { config, inputs, ... }:
 let
   inherit (config.flake.modules) nixos homeManager;
+  system = "x86_64-linux";
 in
 {
   flake.nixosConfigurations.baboon = inputs.nixpkgs.lib.nixosSystem {
-    system = "x86_64-linux";
+    inherit system;
     modules = [
       ./_baboon-hardware.nix
-      nixos.nixpkgs
-      nixos.system-base
-      nixos.secrets
+      nixos.pc
       nixos.joel
-      inputs.home-manager.nixosModules.home-manager
-      inputs.hjem.nixosModules.default
       {
         networking.hostName = "baboon";
 
