@@ -6,11 +6,11 @@
     let
       package = pkgs.skhd;
       skhdConfig = pkgs.writeText "skhdrc" ''
-        fn - b : open -a "Google Chrome"
-        fn + shift - b : open -n -a "Google Chrome"
+        alt - b : open -a "Google Chrome"
+        alt + shift - b : open -n -a "Google Chrome"
 
-        fn - t : open -a ${pkgs.ghostty}/Applications/Ghostty.app
-        fn + shift - t : open -na ${pkgs.ghostty}/Applications/Ghostty.app
+        alt - t : open -a ${pkgs.ghostty}/Applications/Ghostty.app
+        alt + shift - t : open -na ${pkgs.ghostty}/Applications/Ghostty.app
       '';
     in
     {
