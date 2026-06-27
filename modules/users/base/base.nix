@@ -51,11 +51,42 @@ with lib;
             };
         };
       mkPackages =
-        pkgs: with pkgs; [
-          git
-          ghostty
-          nh
-        ];
+        userName:
+        { pkgs, lib, ... }:
+        let
+          isLinux = pkgs.stdenv.isLinux;
+          isDarwin = pkgs.stdenv.isDarwin;
+        in
+        {
+          users.users.${userName}.packages =
+            with pkgs;
+            [
+              curl
+              delve
+              docker-compose
+              ghostty
+              duckdb
+              git
+              go
+              gotools
+              jq
+              mitmproxy
+              neovim
+              nh
+              nixd
+              nixfmt-rfc-style
+              oauth2c
+              tree
+              wget
+            ]
+            ++ (lib.optionals isLinux [
+              xclip
+              spotify
+            ])
+            ++ (lib.optionals isDarwin [
+              iproute2mac
+            ]);
+        };
     in
     {
 
@@ -65,15 +96,18 @@ with lib;
         let
           homeDirectory = "/home/${userName}";
           homeFiles = mkHome userName userConfig;
+          packages = mkPackages userName;
         in
         {
-          imports = [ homeFiles ];
+          imports = [
+            homeFiles
+            packages
+          ];
 
           users.users.${userName} = {
             isNormalUser = true;
             description = userConfig.name;
             home = homeDirectory;
-            packages = mkPackages pkgs;
             extraGroups = [
               "networkmanager"
               "wheel"
@@ -90,14 +124,17 @@ with lib;
         let
           homeDirectory = "/Users/${userName}";
           homeFiles = mkHome userName userConfig;
+          packages = mkPackages userName;
         in
         {
-          imports = [ homeFiles ];
+          imports = [
+            homeFiles
+            packages
+          ];
 
           users.users.${userName} = {
             name = userName;
             home = homeDirectory;
-            packages = mkPackages pkgs;
           };
 
           system.primaryUser = userName;
