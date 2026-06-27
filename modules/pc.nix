@@ -1,19 +1,24 @@
 { config, inputs, ... }:
 let
-  pc = modules: {
+  pc = modules: imports: {
     imports = [
       modules.nixpkgs
       modules.system-base
       modules.secrets
       modules.keybinds
-      inputs.home-manager.darwinModules.home-manager
-      inputs.hjem.darwinModules.default
-    ];
+    ]
+    ++ imports;
   };
 
   inherit (config.flake.modules) nixos darwin;
 in
 {
-  flake.modules.nixos.pc = pc nixos;
-  flake.modules.darwin.pc = pc darwin;
+  flake.modules.nixos.pc = pc nixos [
+    inputs.home-manager.nixosModules.home-manager
+    inputs.hjem.nixosModules.default
+  ];
+  flake.modules.darwin.pc = pc darwin [
+    inputs.home-manager.darwinModules.home-manager
+    inputs.hjem.darwinModules.default
+  ];
 }
