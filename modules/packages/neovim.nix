@@ -63,7 +63,10 @@
                       lsp.enable = false;
                     };
                     go.enable = true;
-                    python.enable = true;
+                    python = {
+                      enable = true;
+                      format.enable = false;
+                    };
                     yaml.enable = true;
                     zig.enable = true;
                   };
