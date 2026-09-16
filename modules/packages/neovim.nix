@@ -115,8 +115,6 @@
                     gitsigns.enable = true;
                   };
 
-                  minimap.codewindow.enable = true;
-
                   notify = {
                     nvim-notify.enable = true;
                   };
