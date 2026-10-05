@@ -81,7 +81,7 @@
                   statusline = {
                     lualine = {
                       enable = true;
-                      theme = "catppuccin";
+                      setupOpts.options.theme = "catppuccin";
                     };
                   };
 

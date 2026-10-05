@@ -74,7 +74,7 @@ with lib;
               neovim
               nh
               nixd
-              nixfmt-rfc-style
+              nixfmt
               oauth2c
               tree
               wget
